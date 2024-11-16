@@ -12,7 +12,7 @@ const Email = () => {
       
       if (email === '' || !email.includes('@')) {
         console.log('Invalid email');
-        setError(true); // Show error message
+        setError(true); 
         return;
       }
 
