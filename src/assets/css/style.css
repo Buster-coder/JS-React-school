@@ -810,18 +810,18 @@ body.dark-mode .li-buttons {
     
 }
 
-.author-man {
+/* .author-man {
     margin-top: 40px;
 }
 
 .author-woman {
     margin-top: 40px;
-}
+} */
 
 .quote-icon {
     display: flex;
     right: 425px;
-    margin-top: -290px;
+    margin-top: -288px;
 }
 
 .quote-icon-2 {
@@ -1126,9 +1126,7 @@ body.dark-mode .circles {
     visibility: hidden;
 }
 
-.email-input.success{
-border-color: lawngreen;
-}
+
 
 .email-input.error {
     border-color: firebrick; 
@@ -1136,6 +1134,46 @@ border-color: lawngreen;
 
 .email-input.error + .invalid-input {
     visibility: visible;
+}
+
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #B4B7C9;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.success-popup p {
+    font-size: 18px;
+    margin: 0 0 15px;
+    color: #333;
+}
+
+.success-popup button {
+    background-color: #6366F1;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.success-popup button:hover {
+    background-color: #4346e0;
+}
+
+body.dark-mode .success-popup {
+    background-color: #0b0f19;
+    color: #ffffff;
+    border-color: #6366F1;
 }
 
 body.dark-mode .seventh-background{
@@ -1146,6 +1184,8 @@ body.dark-mode .email-input {
     background-color: #0b0f19;
     color: #ffffff;
 }
+
+
 
 /* Page 8 */
 
