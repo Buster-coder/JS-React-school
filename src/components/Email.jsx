@@ -1,35 +1,45 @@
 import React, { useState } from 'react';
-import Notif from '../assets/image/notification.svg'
+import Notif from '../assets/image/notification.svg';
 
 const Email = () => {
-    const [email, setEmail] = React.useState('');
-    const [error, setError] = React.useState(false);
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
-    
     const handleSubmit = (e) => {
-      e.preventDefault();
+        e.preventDefault();
+
+        
+        if (
+            !email.endsWith('@gmail.com') && 
+            !email.endsWith('@hotmail.com') ||
+            (email.match(/@/g) || []).length !== 1 ||
+            !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)
+
+        ) {
+            setError(true);
+            console.log('Invalid email');
+            return;
+        }
+        setError(false);
+        setSuccess(true); 
+        setEmail(''); 
 
       
-      if (email === '' || !email.includes('@')) {
-        console.log('Invalid email');
-        setError(true); 
-        return;
-      }
 
-      
-      setError(false);
-      
-      console.log('Form submitted with email:', email);
+        console.log('Form submitted with email:', email);
     };
 
-    
     const handleEmailChange = (e) => {
         const emailValue = e.target.value;
         setEmail(emailValue);
-    
+
         
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(emailValue)) {
+        if (
+            !emailValue.endsWith('@gmail.com') &&
+            !emailValue.endsWith('@hotmail.com') ||
+            (emailValue.match(/@/g) || []).length !== 1
+        ) {
             setError(true);
         } else {
             setError(false);

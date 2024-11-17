@@ -826,8 +826,12 @@ body.dark-mode .li-buttons {
 
 .quote-icon-2 {
     position: flex;
-    margin-top: -290px;
+    margin-top: -310px;
     right: 945px;
+}
+
+body.dark-mode .container-5 p {
+    color: #ffffff;
 }
 
 /* Darkmode section */
@@ -838,8 +842,10 @@ body.dark-mode .fifth-background {
 }
 
 body.dark-mode .customer-rating {
-    background-color: #0f131d
+    background-color: #080808
 }
+
+
 
 /* Sixth page*/
 .sixth-background {
@@ -1118,6 +1124,10 @@ body.dark-mode .circles {
     margin-top: 5px;
     color: firebrick;
     visibility: hidden;
+}
+
+.email-input.success{
+border-color: lawngreen;
 }
 
 .email-input.error {

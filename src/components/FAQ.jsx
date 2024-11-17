@@ -1,33 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PhoneGreen from '../assets/image/icongreen.svg';
 import PhoneIcon from '../assets/image/iconphone.svg';
 
 const FAQ = () => {
+  const [faqData, setFaqData] = useState([]);
+
+  useEffect(() => {
+    const fetchFaqData = async () => {
+      try {
+        const response = await fetch('https://win24-assignment.azurewebsites.net/api/faq');
+        const data = await response.json();
+        setFaqData(data);
+      } catch (err) {
+        console.error('Failed to fetch FAQs:', err);
+      }
+    };
+
+    fetchFaqData();
+  }, []);
+
   useEffect(() => {
     let lastChecked = null;
 
-
     const radioButtons = document.querySelectorAll('.input-radio');
 
+    const handleClick = (event) => {
+      const radio = event.target;
+      if (radio === lastChecked) {
+        radio.checked = false;
+        lastChecked = null;
+      } else {
+        lastChecked = radio;
+      }
+    };
 
     radioButtons.forEach((radio) => {
-      radio.addEventListener('click', function () {
-        if (radio === lastChecked) {
-          radio.checked = false;
-          lastChecked = null;
-        } else {
-          lastChecked = radio;
-        }
-      });
+      radio.addEventListener('click', handleClick);
     });
-
 
     return () => {
       radioButtons.forEach((radio) => {
-        radio.removeEventListener('click', () => { });
+        radio.removeEventListener('click', handleClick);
       });
     };
-  }, []);
+  }, [faqData]); 
 
   return (
     <section className="sixth-background">
@@ -45,9 +61,9 @@ const FAQ = () => {
           </p>
           <div className="call-feature">
             <div className="the-phone">
-              <img src={PhoneIcon} alt="" />
+              <img src={PhoneIcon} alt="Phone Icon" />
               <p className="phone-p">Still have questions?</p>
-              <a href="" className="the-phone-1">
+              <a href="#" className="the-phone-1">
                 <span>Contact us</span>
                 <i className="fa-solid fa-arrow-right"></i>
               </a>
@@ -55,7 +71,7 @@ const FAQ = () => {
           </div>
           <div className="call-feature-2">
             <div className="the-phones">
-              <img src={PhoneGreen} alt="" />
+              <img src={PhoneGreen} alt="Phone Green Icon" />
               <p className="phone-p">Don’t like phone calls?</p>
               <a href="#" className="the-phone-1">
                 <span className="phones-green">Contact us</span>
@@ -67,138 +83,25 @@ const FAQ = () => {
 
         <div className="the-right-stuff">
           <ul className="the-right-side">
-            <li>
-              <input
-                type="radio"
-                name="accordion"
-                id="first-collapse"
-                className="input-radio"
-              />
-              <label htmlFor="first-collapse" className="lab-text">
-                Is any of my personal information stored in the App
-                <span className="circles">
-                  <i className="fa-solid fa-chevron-up"></i>
-                </span>
-              </label>
-              <div className="all-content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Dolorem delectus nesciunt veritatis ipsa deserunt nemo facilis
-                  labore! Numquam quasi reprehenderit praesentium saepe libero
-                  ea voluptate. Nostrum nam ullam omnis praesentium?
-                </p>
-              </div>
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="accordion"
-                id="second-collapse"
-                className="input-radio"
-              />
-              <label htmlFor="second-collapse" className="lab-text">
-                What formats can I download my transaction history in?
-                <span className="circles">
-                  <i className="fa-solid fa-chevron-up"></i>
-                </span>
-              </label>
-              <div className="all-content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Dolorem delectus nesciunt veritatis ipsa deserunt nemo facilis
-                  labore! Numquam quasi reprehenderit praesentium saepe libero
-                  ea voluptate. Nostrum nam ullam omnis praesentium?
-                </p>
-              </div>
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="accordion"
-                id="third-collapse"
-                className="input-radio"
-              />
-              <label htmlFor="third-collapse" className="lab-text">
-                Can I schedule future transfers?
-                <span className="circles">
-                  <i className="fa-solid fa-chevron-up"></i>
-                </span>
-              </label>
-              <div className="all-content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Dolorem delectus nesciunt veritatis ipsa deserunt nemo facilis
-                  labore! Numquam quasi reprehenderit praesentium saepe libero
-                  ea voluptate. Nostrum nam ullam omnis praesentium?
-                </p>
-              </div>
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="accordion"
-                id="fourth-collapse"
-                className="input-radio"
-              />
-              <label htmlFor="fourth-collapse" className="lab-text">
-                When can I use Banking App services?
-                <span className="circles">
-                  <i className="fa-solid fa-chevron-up"></i>
-                </span>
-              </label>
-              <div className="all-content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Dolorem delectus nesciunt veritatis ipsa deserunt nemo facilis
-                  labore! Numquam quasi reprehenderit praesentium saepe libero
-                  ea voluptate. Nostrum nam ullam omnis praesentium?
-                </p>
-              </div>
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="accordion"
-                id="fifth-collapse"
-                className="input-radio"
-              />
-              <label htmlFor="fifth-collapse" className="lab-text">
-                Can I create my own password that is easy for me to remember?
-                <span className="circles">
-                  <i className="fa-solid fa-chevron-up"></i>
-                </span>
-              </label>
-              <div className="all-content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Dolorem delectus nesciunt veritatis ipsa deserunt nemo facilis
-                  labore! Numquam quasi reprehenderit praesentium saepe libero
-                  ea voluptate. Nostrum nam ullam omnis praesentium?
-                </p>
-              </div>
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="accordion"
-                id="sixth-collapse"
-                className="input-radio"
-              />
-              <label htmlFor="sixth-collapse" className="lab-text">
-                What happens if I forget or lose my password?
-                <span className="circles">
-                  <i className="fa-solid fa-chevron-up"></i>
-                </span>
-              </label>
-              <div className="all-content">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Dolorem delectus nesciunt veritatis ipsa deserunt nemo facilis
-                  labore! Numquam quasi reprehenderit praesentium saepe libero
-                  ea voluptate. Nostrum nam ullam omnis praesentium?
-                </p>
-              </div>
-            </li>
+            {faqData.map((faq) => (
+              <li key={faq.id}>
+                <input
+                  type="radio"
+                  name="accordion"
+                  id={faq.id}
+                  className="input-radio"
+                />
+                <label htmlFor={faq.id} className="lab-text">
+                  {faq.title}
+                  <span className="circles">
+                    <i className="fa-solid fa-chevron-up"></i>
+                  </span>
+                </label>
+                <div className="all-content">
+                  <p>{faq.content}</p>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

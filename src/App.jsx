@@ -6,7 +6,7 @@ import BrandBoxes from './components/BrandBoxes'
 import AppFeatures from './components/AppFeatures'
 import HowDoesItWork from './components/HowDoesItWork'
 import TransferMoney from './components/TransferMoney'
-import Rewiev from './components/Rewiev'
+import Review from './components/Review'
 import FAQ from './components/FAQ'
 import Email from './components/Email'
 import Contact from './components/Contact'
@@ -24,7 +24,7 @@ function App() {
        <AppFeatures />
        <HowDoesItWork />
        <TransferMoney />
-       <Rewiev />
+       <Review />
        <FAQ />
        <Email />
        <Contact />
